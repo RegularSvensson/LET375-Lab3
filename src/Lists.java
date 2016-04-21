@@ -140,4 +140,12 @@ public class Lists {
     public static ListNode reverse(ListNode head) {  
         return null;
     }
+    /*
+     * Throws an exception if ListNode is null
+     * The exception cointans a specified string
+     */
+    private static void Exception(ListNode l, String s){
+    	if(l == null)
+    		throw new ListsException("Lists: null passed to" + s);
+    }
 }
