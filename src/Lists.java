@@ -171,7 +171,22 @@ public class Lists {
    
     // Testmetod: JunitListTest.testAddLast()
     public static ListNode addLast(ListNode l,char c) {  
-        return null;
+        // check exception
+    	Exception(l, "addLast");
+    	ListNode listNode = l;
+        while(true){
+        	// check if listNode is null
+        	if(listNode.next == null){
+        		// update listNode element to c
+        		listNode.next = new ListNode();
+        		listNode.next.element = c;
+        		break;
+        	}
+        	else
+        		// update listNode
+        		listNode = listNode.next;
+        }
+        return l;
     }
     
     // Testmetod: JunitListTest.testConcat()
