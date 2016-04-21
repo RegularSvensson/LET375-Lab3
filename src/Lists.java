@@ -191,7 +191,14 @@ public class Lists {
     
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {  
-        return null;
+        // check exceptions
+    	Exception(l1, "concat");
+        Exception(l2, "concat");
+        // concatenate lists
+        ListNode listNode = getLastNode(l1);
+        listNode.next = l2.next;
+        l2.next = null;
+        return l1;
     }
     
     // Testmetod: JunitListTest.testAddAll()
