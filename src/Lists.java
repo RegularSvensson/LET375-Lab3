@@ -212,8 +212,16 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testConcat()
+    //joins l1 with l2 so that all nodes in l2 follows the nodes in l1
+    //Then, l2 refer to an empty list
+    //Method mutes both l1 and l2 and return a reference to l1
     public static ListNode concat(ListNode l1,ListNode l2) {  
-        return null;
+    	if (l1 != null || l2 != null) {
+    		getLastNode(l1).next = l2.next; //joining l1 with l2
+    		l2.next = null; //l2 refers to an empty list
+    			return l1;
+	    }
+	    	throw new ListsException("Lists: null passed to concat");
     }
     
     // Testmetod: JunitListTest.testAddAll()
