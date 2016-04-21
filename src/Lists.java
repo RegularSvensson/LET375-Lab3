@@ -225,8 +225,15 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testAddAll()
+    //add all elements in l2 to the end of l1
+    //Method mutes l1 but not l2
+    //Returning reference to l1
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-        return null;
+    	if (l1 != null || l2 != null) {
+    		getLastNode(l1).next = copy(l2).next; //joining l1 with l2
+    			return l1;
+	    }
+	    	throw new ListsException("Lists: null passed to addAll");
     }
       
     // Testmetod: JunitListTest.testReverse()
