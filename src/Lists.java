@@ -135,8 +135,32 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testCopyUpperCase()
+    //Return a new list with all characters l that are upper cases
+    //Does not mute
     public static ListNode copyUpperCase(ListNode head) {
-        return null;
+    	//new and old pointer going through each list
+    	ListNode pointerNew = head;
+    	ListNode pointerOld = head.next;
+    	
+    	//New list's head
+    	ListNode newl = new ListNode();
+   	
+    	//looping through old list
+    	while(pointerOld !=null) {
+    		//Checking each element in old list if it is an upper case
+    		if(Character.isUpperCase(pointerOld.element)){
+    			//creates a new listnode for each value
+    			ListNode list = new ListNode();
+    			list.element = pointerOld.element;
+    			//pointer to the new listNode
+    			pointerNew.next = head;
+    			head = pointerNew.next;   			
+    		}
+    	pointerOld = pointerOld.next;
+    	return newl;
+    	}
+    	//if l == null the throw exception
+    	throw new ListsException("Lists: null passed to copyUpperCase");
     }
     
     // Testmetod: JunitListTest.testAddFirst()
