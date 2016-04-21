@@ -237,7 +237,24 @@ public class Lists {
     }
       
     // Testmetod: JunitListTest.testReverse()
+    //return a new list with elements in l reversed 
+    //Method should not mute l
     public static ListNode reverse(ListNode head) {  
-        return null;
+    	ListNode list = head.next;
+    	ListNode previous = null;
+    	//while list is not null then give a new list with reversed order of elements
+    	while (list != null) {
+    		head.element = list.element;
+    		ListNode newList = new ListNode ();
+    		head.next = previous;
+    		previous = newList;
+    		list = list.next;
+	    	//the new list with reversed elements
+	    	ListNode newl = new ListNode();
+	    	newl.next = previous;
+    		return newl;
+    	}
+    	//if list is null, then throw exception
+    	throw new ListsException("Lists: null passed to reverse");
     }
 }
