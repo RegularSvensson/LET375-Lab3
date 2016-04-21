@@ -164,8 +164,19 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testAddFirst()
+    //Add c first in l
+    //Method mutes l and return a reference to l
     public static ListNode addFirst(ListNode l,char c) {  
-        return null;
+        //if l is not null then add c first in l when l is first in the list
+        if(l != null) {
+        	ListNode newl = new ListNode();
+        	l.element = c;
+        	newl.next = l;
+        return newl;
+        }
+        //if l == null then throw exception
+        else 
+        	throw new ListsException ("Lists: null passed to addFirst");
     }
          
     // This is a private utility method.
