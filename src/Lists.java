@@ -195,8 +195,20 @@ public class Lists {
     }
    
     // Testmetod: JunitListTest.testAddLast()
+    //add c last in l
+    //Method mute l
+    //Method return a reference to l
     public static ListNode addLast(ListNode l,char c) {  
-        return null;
+    	//if l is not null the add node and return l
+    	if (l != null) {
+    		ListNode newl = new ListNode();
+        	l.element = c;
+        	newl.next = l;	
+        	
+        	return l;
+	    }
+	    	//if l is null then throw exception  	
+	    throw new ListsException ("Lists: null passed to addLast");  
     }
     
     // Testmetod: JunitListTest.testConcat()
