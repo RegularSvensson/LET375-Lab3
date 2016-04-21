@@ -163,7 +163,7 @@ public class Lists {
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
     	ListNode listNode = head;
-    	while(listNode != null){
+    	while(listNode.next != null){
     		listNode = listNode.next;
     	}
     	return listNode;
@@ -203,13 +203,18 @@ public class Lists {
     
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-        return null;
+        // check exceptions
+    	Exception(l1, "addAll");
+    	Exception(l2, "addAll");
+    	// add elements to node
+    	getLastNode(l1).next = copy(l2).next;
+    	return l1;
     }
       
-    // Testmetod: JunitListTest.testReverse()
-    public static ListNode reverse(ListNode head) {  
-        return null;
-    }
+	// Testmetod: JunitListTest.testReverse()
+	public static ListNode reverse(ListNode head) {
+		return null;
+	}
     /*
      * Throws an exception if ListNode is null
      * The exception cointans a specified string
