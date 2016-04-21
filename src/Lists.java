@@ -180,8 +180,18 @@ public class Lists {
     }
          
     // This is a private utility method.
+    //returning a reference to the last node in l
+    //does not mute
     private static ListNode getLastNode(ListNode head) {
-        return null;
+    	ListNode list = head;
+    	
+    	//as long a list is not null return a reference to previous nod
+    	while (list.next != null) {
+    		list = list.next;
+    	return list;
+    	}
+    	//if == null throw exception
+    	throw new ListsException ("Lists: null passed to getLastNode");
     }
    
     // Testmetod: JunitListTest.testAddLast()
