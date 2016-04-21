@@ -116,9 +116,22 @@ public class Lists {
 		}
    }
     
-    // Testmetod: JunitListTest.testContains()
-    public static boolean contains(ListNode head,char c) {
-        return false;
+   // Testmetod: JunitListTest.testContains()
+   //return true if 1 contains c, else false
+   //Does not mute
+   public static boolean contains(ListNode l,char c) {
+	   boolean contains = false;
+	   ListNode list = l.next;
+    	
+    	//while not null return true if l has c
+    	while(list != null) {
+    		if(list.element == c)
+    			contains = true;
+    		list = list.next; //move forward in the list
+    		return contains;
+    	}
+    	//if l == null then throw Exception
+    	throw new ListsException("Lists: null passed to contains");
     }
     
     // Testmetod: JunitListTest.testCopyUpperCase()
