@@ -98,21 +98,18 @@ public class Lists {
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-		if (l == null)
-			//if null, throw ListException
-       	 	throw new ListsException("Lists: null passed toString");
-    	ListNode list = null;
-		String s = "";
-		 
+    	//if null, throw ListException
+    	if (l == null)
+       	 	throw new ListsException("Lists: null passed toString"); 
 		//If next is not null, then keep adding string elements
 		//Searches through each list element and return a string
-		while(true){
-			if(list.next != null){
-				list = list.next;
-				s += list.element;
-			}
-		    return s;
+		ListNode list = l.next;
+		String s = "";
+		while (list != null){
+			s += list.element;
+			list = list.next;
 		}
+		return s;
    }
     
    // Testmetod: JunitListTest.testContains()
