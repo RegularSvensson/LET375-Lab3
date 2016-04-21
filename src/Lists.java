@@ -119,6 +119,8 @@ public class Lists {
    //return true if 1 contains c, else false
    //Does not mute
    public static boolean contains(ListNode l,char c) {
+	   if (l == null)
+		   throw new ListsException("Lists: null passed to contains");
 	   boolean contains = false;
 	   ListNode list = l.next;
     	
@@ -127,10 +129,8 @@ public class Lists {
     		if(list.element == c)
     			contains = true;
     		list = list.next; //move forward in the list
-    		return contains;
     	}
-    	//if l == null then throw Exception
-    	throw new ListsException("Lists: null passed to contains");
+    	return contains;
     }
     
     // Testmetod: JunitListTest.testCopyUpperCase()
