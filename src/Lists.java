@@ -134,29 +134,22 @@ public class Lists {
     //Return a new list with all characters l that are upper cases
     //Does not mute
     public static ListNode copyUpperCase(ListNode head) {
-    	//new and old pointer going through each list
-    	ListNode pointerNew = head;
+    	if (head == null)
+    		throw new ListsException("Lists: null passed to copyUpperCase");
+    	ListNode newl = new ListNode();
+    	ListNode pointerNew = newl;
     	ListNode pointerOld = head.next;
     	
-    	//New list's head
-    	ListNode newl = new ListNode();
-   	
-    	//looping through old list
-    	while(pointerOld !=null) {
-    		//Checking each element in old list if it is an upper case
-    		if(Character.isUpperCase(pointerOld.element)){
-    			//creates a new listnode for each value
-    			ListNode list = new ListNode();
-    			list.element = pointerOld.element;
-    			//pointer to the new listNode
-    			pointerNew.next = head;
-    			head = pointerNew.next;   			
+    	while(pointerOld != null) {
+    		if( pointerOld.element >= 'A' && pointerOld.element <= 'Z' ) {
+    			ListNode LN = new ListNode();
+    			LN.element = pointerOld.element;
+    			pointerNew.next = LN;
+    			pointerNew = pointerNew.next;
     		}
-    	pointerOld = pointerOld.next;
-    	return newl;
+    		pointerOld = pointerOld.next;
     	}
-    	//if l == null the throw exception
-    	throw new ListsException("Lists: null passed to copyUpperCase");
+    	return newl;
     }
     
     // Testmetod: JunitListTest.testAddFirst()
@@ -194,30 +187,36 @@ public class Lists {
     //add c last in l
     //Method mute l
     //Method return a reference to l
-    public static ListNode addLast(ListNode l,char c) {  
-    	//if l is not null the add node and return l
-    	if (l != null) {
-    		ListNode newl = new ListNode();
-        	l.element = c;
-        	newl.next = l;	
-        	
-        	return l;
-	    }
-	    	//if l is null then throw exception  	
-	    throw new ListsException ("Lists: null passed to addLast");  
-    }
-    
+    public static ListNode addLast(ListNode l,char c) {
+		if (l == null)
+			throw new ListsException ("Lists: null passed to addLast");
+		ListNode newListNode = l;
+		while(true){
+			if(newListNode.next == null){
+				newListNode.next = new ListNode();
+				newListNode.next.element = c;
+				break;
+			}
+			else{
+				newListNode = newListNode.next;
+			}
+		}
+		return l;
+	}
     // Testmetod: JunitListTest.testConcat()
     //joins l1 with l2 so that all nodes in l2 follows the nodes in l1
     //Then, l2 refer to an empty list
     //Method mutes both l1 and l2 and return a reference to l1
     public static ListNode concat(ListNode l1,ListNode l2) {  
-    	if (l1 != null || l2 != null) {
-    		getLastNode(l1).next = l2.next; //joining l1 with l2
+    	if (l1 != null && l2 != null) {
+    		// getLastNode(l1).next = l2.next; //joining l1 with l2
+    		ListNode list;
+    		list = getLastNode(l1);
+    		list.next = l2.next;
     		l2.next = null; //l2 refers to an empty list
-    			return l1;
+    		return l1;
 	    }
-	    	throw new ListsException("Lists: null passed to concat");
+	    throw new ListsException("Lists: null passed to concat");
     }
     
     // Testmetod: JunitListTest.testAddAll()
@@ -236,8 +235,13 @@ public class Lists {
     //return a new list with elements in l reversed 
     //Method should not mute l
     public static ListNode reverse(ListNode head) {  
+    	if (head == null)
+    		throw new ListsException("Lists: null passed to reverse");
     	ListNode list = head.next;
     	ListNode previous = null;
+    	//the new list with reversed elements
+    	ListNode newl = new ListNode();
+    	
     	//while list is not null then give a new list with reversed order of elements
     	while (list != null) {
     		head.element = list.element;
@@ -245,12 +249,10 @@ public class Lists {
     		head.next = previous;
     		previous = newList;
     		list = list.next;
-	    	//the new list with reversed elements
-	    	ListNode newl = new ListNode();
+	    	
 	    	newl.next = previous;
-    		return newl;
+    		
     	}
-    	//if list is null, then throw exception
-    	throw new ListsException("Lists: null passed to reverse");
+    	return newl;
     }
 }
