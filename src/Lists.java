@@ -98,6 +98,11 @@ public class Lists {
     // ---------------- Uppgifter ----------------- 
     
     // Testmetod: JunitListTest.testToString()
+    /**
+     * Returns a list as a string
+     * @param l list
+     * @return s string
+     */
     public static String toString(ListNode l) {
         // check exception 
     	Exception(l, "toString");
@@ -112,6 +117,12 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testContains()
+    /**
+     * Checks if a list contains a char
+     * @param head
+     * @param c
+     * @return true or false
+     */
     public static boolean contains(ListNode head,char c) {
         // check exception
     	Exception(head, "contains");
@@ -127,6 +138,11 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testCopyUpperCase()
+    /**
+     * Returns a copy of a list with upper case characters
+     * @param head
+     * @return
+     */
     public static ListNode copyUpperCase(ListNode head) {
         // check exception
     	Exception(head, "copyUpperCase");
@@ -150,6 +166,12 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testAddFirst()
+    /**
+     * Adds a character to list
+     * @param l
+     * @param c
+     * @return
+     */
     public static ListNode addFirst(ListNode l,char c) {  
     	// check exception
     	Exception(l, "addFirst");
@@ -162,6 +184,11 @@ public class Lists {
     }
          
     // This is a private utility method.
+    /**
+     * Returns the last node in a list
+     * @param head
+     * @return
+     */
     private static ListNode getLastNode(ListNode head) {
     	ListNode listNode = head;
     	while(listNode.next != null){
@@ -171,6 +198,12 @@ public class Lists {
     }
    
     // Testmetod: JunitListTest.testAddLast()
+    /**
+     * Returns a list with a character added last in the list
+     * @param l
+     * @param c
+     * @return
+     */
     public static ListNode addLast(ListNode l,char c) {  
         // check exception
     	Exception(l, "addLast");
@@ -191,6 +224,12 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testConcat()
+    /**
+     * Returns a list that is a concatenation of two lists
+     * @param l1
+     * @param l2
+     * @return
+     */
     public static ListNode concat(ListNode l1,ListNode l2) {  
         // check exceptions
     	Exception(l1, "concat");
@@ -203,6 +242,12 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testAddAll()
+    /**
+     * Returns a list with all nodes of another list added
+     * @param l1
+     * @param l2
+     * @return
+     */
     public static ListNode addAll(ListNode l1,ListNode l2) { 
         // check exceptions
     	Exception(l1, "addAll");
@@ -213,6 +258,11 @@ public class Lists {
     }
       
 	// Testmetod: JunitListTest.testReverse()
+    /**
+     * Returnes a reversed list
+     * @param head
+     * @return
+     */
 	public static ListNode reverse(ListNode head) {
 		// check exception
 		Exception(head, "reverse");
@@ -230,9 +280,11 @@ public class Lists {
 		headNew.next = oldListNode;
 		return headNew;
 	}
-    /*
+    /**
      * Throws an exception if ListNode is null
-     * The exception cointans a specified string
+     * The exception contains a specified string
+     * @param l
+     * @param s
      */
     private static void Exception(ListNode l, String s){
     	if(l == null)
