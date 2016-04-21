@@ -1,8 +1,9 @@
 /**
  * A collection of utility functions for C style primitive list handling.
  *
- * @author(s)
- * @version 2016-04-19
+ * @author(s) Mona Khoshoi, Elias Svensson
+ * @version 2016-04-21
+ * Email: khoshoimona@gmail.com, elias.svensson.1992@gmail.com
  */
 public class Lists {
    
@@ -41,24 +42,24 @@ public class Lists {
         }
     }
     
-    // Se förel. OH
+    // Se fï¿½rel. OH
     public static ListNode toList(String chars) {
-        ListNode head, ptr1;     // head pekar alltid på listans huvud
-        head = new ListNode();   // Listans huvud (innehåller ej data)
+        ListNode head, ptr1;     // head pekar alltid pï¿½ listans huvud
+        head = new ListNode();   // Listans huvud (innehï¿½ller ej data)
         head.next = null;
-        ptr1 = head;             // ptr pekar på sista noden
+        ptr1 = head;             // ptr pekar pï¿½ sista noden
 
         // Bygg en lista av tecken
         for ( int i = 0; i < chars.length(); i++ ) {
             ptr1.next = new ListNode();          // Addera en ny nod sist
             ptr1 = ptr1.next;                    // Flytta fram till den nya noden
-            ptr1.element = chars.charAt(i);      // Sätt in tecknet
+            ptr1.element = chars.charAt(i);      // Sï¿½tt in tecknet
             ptr1.next = null;                    // Avsluta listan
         } 
         return head;
     }
     
-    // Se förel. OH
+    // Se fï¿½rel. OH
     public static ListNode copy(ListNode l) {
         if ( l == null )
             throw new ListsException("Lists: null passed to copy");
@@ -67,7 +68,7 @@ public class Lists {
         head.next = null;
         ptr1 = head;
 
-        ptr2 = l.next;  // första listelementet i originallistan
+        ptr2 = l.next;  // fï¿½rsta listelementet i originallistan
         while ( ptr2 != null ) {
             ptr1.next = new ListNode();    // Ny nod i kopian
             ptr1 = ptr1.next;              // Flytta fram
@@ -78,66 +79,215 @@ public class Lists {
         return head;
     }
     
-    // Se förel. OH
+    // Se fï¿½rel. OH
     public static ListNode removeAll(ListNode l,char c) {
         if ( l == null )
             throw new ListsException("Lists: null passed to removeAll");
         ListNode p = l;
         while ( p.next != null ) {
-            ListNode temp = p.next;      // Handtag på nästa nod
+            ListNode temp = p.next;      // Handtag pï¿½ nï¿½sta nod
             if ( temp.element == c )     // Skall den tas bort?
-                p.next = temp.next;      // Länka förbi
+                p.next = temp.next;      // Lï¿½nka fï¿½rbi
             else
-                p = p.next;              // Nej, gå vidare *
+                p = p.next;              // Nej, gï¿½ vidare *
         }
-        // * p får ej flyttas om den efterföljande noden togs bort!
+        // * p fï¿½r ej flyttas om den efterfï¿½ljande noden togs bort!
         return l;
      }
     
     // ---------------- Uppgifter ----------------- 
     
     // Testmetod: JunitListTest.testToString()
+    /**
+     * Returns a list as a string
+     * @param l list
+     * @return s string
+     */
     public static String toString(ListNode l) {
-         return null;
+        // check exception 
+    	Exception(l, "toString");
+    	String s = "";
+    	ListNode nextListNode = l.next;
+    	// Add elements to string
+    	while(nextListNode != null){
+    		s += nextListNode.element;
+    		nextListNode = nextListNode.next;
+    	}
+    	return s;     
     }
     
     // Testmetod: JunitListTest.testContains()
+    /**
+     * Checks if a list contains a char
+     * @param head
+     * @param c
+     * @return true or false
+     */
     public static boolean contains(ListNode head,char c) {
-        return false;
+        // check exception
+    	Exception(head, "contains");
+    	boolean found = false;
+    	ListNode nextHead = head.next;
+    	// check if char found
+    	while(nextHead != null && !found){
+    		if(nextHead.element == c)
+    			found = true;
+    		nextHead = nextHead.next;
+    	}
+    	return found;
     }
     
     // Testmetod: JunitListTest.testCopyUpperCase()
+    /**
+     * Returns a copy of a list with upper case characters
+     * @param head
+     * @return
+     */
     public static ListNode copyUpperCase(ListNode head) {
-        return null;
+        // check exception
+    	Exception(head, "copyUpperCase");
+    	ListNode headNew = new ListNode();
+    	ListNode pointerNew = headNew;
+    	ListNode pointerOld = head.next;
+    	while(pointerOld != null){
+    		// check if element in old list is upper case
+    		if(Character.isUpperCase(pointerOld.element)){
+    			// add new node for this character
+    			ListNode listNode = new ListNode();
+    			listNode.element = pointerOld.element;
+    			// update new pointer 
+    			pointerNew.next = listNode;
+    			pointerNew = pointerNew.next;
+    		}
+    		// update old pointer
+    		pointerOld = pointerOld.next;
+    	}
+    	return headNew;
     }
     
     // Testmetod: JunitListTest.testAddFirst()
+    /**
+     * Adds a character to list
+     * @param l
+     * @param c
+     * @return
+     */
     public static ListNode addFirst(ListNode l,char c) {  
-        return null;
+    	// check exception
+    	Exception(l, "addFirst");
+        ListNode head = new ListNode();
+        // update element of l to c
+        l.element = c;
+        // update next head to l
+        head.next = l;
+        return head;
     }
          
     // This is a private utility method.
+    /**
+     * Returns the last node in a list
+     * @param head
+     * @return
+     */
     private static ListNode getLastNode(ListNode head) {
-        return null;
+    	ListNode listNode = head;
+    	while(listNode.next != null){
+    		listNode = listNode.next;
+    	}
+    	return listNode;
     }
    
     // Testmetod: JunitListTest.testAddLast()
+    /**
+     * Returns a list with a character added last in the list
+     * @param l
+     * @param c
+     * @return
+     */
     public static ListNode addLast(ListNode l,char c) {  
-        return null;
+        // check exception
+    	Exception(l, "addLast");
+    	ListNode listNode = l;
+        while(true){
+        	// check if listNode is null
+        	if(listNode.next == null){
+        		// update listNode element to c
+        		listNode.next = new ListNode();
+        		listNode.next.element = c;
+        		break;
+        	}
+        	else
+        		// update listNode
+        		listNode = listNode.next;
+        }
+        return l;
     }
     
     // Testmetod: JunitListTest.testConcat()
+    /**
+     * Returns a list that is a concatenation of two lists
+     * @param l1
+     * @param l2
+     * @return
+     */
     public static ListNode concat(ListNode l1,ListNode l2) {  
-        return null;
+        // check exceptions
+    	Exception(l1, "concat");
+        Exception(l2, "concat");
+        // concatenate lists
+        ListNode listNode = getLastNode(l1);
+        listNode.next = l2.next;
+        l2.next = null;
+        return l1;
     }
     
     // Testmetod: JunitListTest.testAddAll()
+    /**
+     * Returns a list with all nodes of another list added
+     * @param l1
+     * @param l2
+     * @return
+     */
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-        return null;
+        // check exceptions
+    	Exception(l1, "addAll");
+    	Exception(l2, "addAll");
+    	// add elements to node
+    	getLastNode(l1).next = copy(l2).next;
+    	return l1;
     }
       
-    // Testmetod: JunitListTest.testReverse()
-    public static ListNode reverse(ListNode head) {  
-        return null;
+	// Testmetod: JunitListTest.testReverse()
+    /**
+     * Returnes a reversed list
+     * @param head
+     * @return
+     */
+	public static ListNode reverse(ListNode head) {
+		// check exception
+		Exception(head, "reverse");
+		ListNode oldListNode = null;
+		ListNode listNode = head.next;
+		// reverse list
+		while(listNode != null){
+			ListNode newListNode = new ListNode();
+			newListNode.element = listNode.element;
+			newListNode.next = oldListNode;
+			oldListNode = newListNode;
+			listNode = listNode.next;
+		}
+		ListNode headNew = new ListNode();
+		headNew.next = oldListNode;
+		return headNew;
+	}
+    /**
+     * Throws an exception if ListNode is null
+     * The exception contains a specified string
+     * @param l
+     * @param s
+     */
+    private static void Exception(ListNode l, String s){
+    	if(l == null)
+    		throw new ListsException("Lists: null passed to" + s);
     }
 }
