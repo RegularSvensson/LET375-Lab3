@@ -1,8 +1,9 @@
 /**
  * A collection of utility functions for C style primitive list handling.
  *
- * @author(s)
- * @version 2016-04-19
+ * @author(s) Mona Khoshoi, Elias Svensson
+ * @version 2016-04-21
+ * Email: khoshoimona@gmail.com, elias.svensson.1992@gmail.com
  */
 public class Lists {
    
