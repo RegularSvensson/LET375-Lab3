@@ -112,7 +112,17 @@ public class Lists {
     
     // Testmetod: JunitListTest.testContains()
     public static boolean contains(ListNode head,char c) {
-        return false;
+        // check exception
+    	Exception(head, "contains");
+    	boolean found = false;
+    	ListNode nextHead = head.next;
+    	// check if char found
+    	while(nextHead != null && !found){
+    		if(nextHead.element == c)
+    			found = true;
+    		nextHead = nextHead.next;
+    	}
+    	return found;
     }
     
     // Testmetod: JunitListTest.testCopyUpperCase()
