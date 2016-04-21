@@ -213,7 +213,21 @@ public class Lists {
       
 	// Testmetod: JunitListTest.testReverse()
 	public static ListNode reverse(ListNode head) {
-		return null;
+		// check exception
+		Exception(head, "reverse");
+		ListNode oldListNode = null;
+		ListNode listNode = head.next;
+		// reverse list
+		while(listNode != null){
+			ListNode newListNode = new ListNode();
+			newListNode.element = listNode.element;
+			newListNode.next = oldListNode;
+			oldListNode = newListNode;
+			listNode = listNode.next;
+		}
+		ListNode headNew = new ListNode();
+		headNew.next = oldListNode;
+		return headNew;
 	}
     /*
      * Throws an exception if ListNode is null
