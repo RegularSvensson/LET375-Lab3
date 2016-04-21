@@ -98,7 +98,16 @@ public class Lists {
     
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-         return null;
+        // check exception 
+    	Exception(l, "toString");
+    	String s = "";
+    	ListNode nextListNode = l.next;
+    	// Add elements to string
+    	while(nextListNode != null){
+    		s += nextListNode.element;
+    		nextListNode = nextListNode.next;
+    	}
+    	return s;     
     }
     
     // Testmetod: JunitListTest.testContains()
