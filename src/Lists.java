@@ -228,11 +228,11 @@ public class Lists {
     //Method mutes l1 but not l2
     //Returning reference to l1
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-    	if (l1 != null || l2 != null) {
+    	if (l1 != null && l2 != null) {
     		getLastNode(l1).next = copy(l2).next; //joining l1 with l2
-    			return l1;
+    		return l1;
 	    }
-	    	throw new ListsException("Lists: null passed to addAll");
+	    throw new ListsException("Lists: null passed to addAll");
     }
       
     // Testmetod: JunitListTest.testReverse()
